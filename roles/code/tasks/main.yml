@@ -12,8 +12,7 @@
   when: code_atom_install == True
   
 - name: Ensure Code Directory Exists
-  become: True
-  become_user: "{{ install_user }}"
+  become: False
   file:
     state=directory
     mode=0755
