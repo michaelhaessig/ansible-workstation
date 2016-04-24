@@ -1,0 +1,11 @@
+---
+
+
+#- name: Install Open VMware Tools
+#apt: name=open-vm-tools state=present
+  
+- name: Install Open VMware Dekstop Tools
+  apt: name=open-vm-tools-desktop state=present
+  when: vmware_tools == True
+  
+

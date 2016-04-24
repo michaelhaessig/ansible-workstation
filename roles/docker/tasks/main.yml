@@ -1,0 +1,14 @@
+---
+
+- name: Add Docker repository key
+  apt_key: keyserver='p80.pool.sks-keyservers.net' id='58118E89F3A912897C070ADBF76221572C52609D' state=present
+
+- name: Add Docker repository
+  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
+
+- name: Install Docker
+  apt: pkg='docker-engine={{ docker_version }}' state=present update_cache=yes
+  notify: "Start Docker"
+
+  
+

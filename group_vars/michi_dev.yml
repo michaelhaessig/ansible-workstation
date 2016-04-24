@@ -1,0 +1,6 @@
+# Config File um die Default Group Vars zu überscheiben
+# wird mithilfe von einer neuen Group im inventory included
+
+
+openvpn_client_name: MichaelHaessig
+

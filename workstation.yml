@@ -1,0 +1,52 @@
+---
+# Miki Workstation Playbook
+
+#- name: Generate APT Pinnings for specified Packages
+#  hosts: all
+#  become: True
+#  roles:
+#    - { role: debops.apt_preferences, tags: ["apt-pinning"] }
+
+- name: Install Common Packages
+  hosts: all
+  become: True
+  roles:
+    - { role: common, tags: ["common"] }
+    
+- name: Install VMWare Tools
+  hosts: all
+  become: True
+  roles:
+    - { role: vmware, tags: ["vmware"] }
+    
+- name: Install Java
+  hosts: all
+  become: True
+  roles:
+    - { role: java, tags: ["java"] }
+    
+- name: Install Docker
+  hosts: all
+  become: True
+  roles:
+    - { role: docker, tags: ["docker"] }
+    
+- name: Install OpenVPN
+  hosts: all
+  become: True
+  roles:
+    - { role: openvpn, tags: ["openvpn"] }
+    
+- name: Install Code Tools
+  hosts: all
+  become: True
+  roles:
+    - { role: code, tags: ["code"] }
+    
+- name: Install IntelliJ
+  hosts: all
+  become: True
+  roles:
+    - { role: intellij, tags: ["intellij"] }
+    
+

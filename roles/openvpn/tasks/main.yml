@@ -1,0 +1,14 @@
+---
+
+
+- name: Install OpenVPN
+  apt: name=openvpn state=present
+
+# @TODO Setup as a Service 
+#- name: Copy VPN Configurations
+  #copy: src="{{ openvpn_config_dir }}" dest=/etc/openvpn/
+  
+#- name: Start OpenVPN as a Service and enable on Boot
+  #service: name="openvpn@{{ openvpn_client_name }}" state=started enabled=yes
+  
+

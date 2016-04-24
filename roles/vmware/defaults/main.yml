@@ -1,0 +1,4 @@
+---
+# defaults file for common
+
+vmware_tools: True

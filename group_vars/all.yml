@@ -1,0 +1,19 @@
+---
+# Variables here are applicable to all host groups
+
+install_user: miki4you
+
+# Java
+java_pkg: oracle-java8-installer
+java_pkg_version: 8u77+8u77arm-1~webupd8~4
+
+# Itellij 
+intellij_version: 15.0.5
+
+
+# Docker Config
+docker_version: "1.11.0-0~{{ ansible_distribution_release }}"
+
+
+
+

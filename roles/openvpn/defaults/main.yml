@@ -1,0 +1,5 @@
+---
+# defaults file for openvpn
+
+openvpn_config_dir: inventories/config/vpn/
+openvpn_client_name: client

@@ -1,0 +1,16 @@
+---
+
+- name: Update All Source Lists
+  apt: update_cache=yes cache_valid_time=3600
+  become: yes
+
+- name: Make sure Update Notifier package is installed ( used to check /var/run/reboot-required )
+  apt: name=update-notifier-common state=present
+  
+- name: Install Tar
+  apt: name=tar state=present
+  
+- name: Install Chromium
+  apt: name=chromium-browser state=present
+  
+  

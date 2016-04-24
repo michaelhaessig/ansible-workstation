@@ -1,0 +1,6 @@
+ 
+[local]
+localhost ansible_connection=local
+
+[michi_dev:children]
+local

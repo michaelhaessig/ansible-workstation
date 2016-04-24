@@ -1,0 +1,22 @@
+---
+
+- name: Install Maven
+  apt: pkg=maven state=present
+
+- name: Add Atom repository
+  apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/atom/ubuntu {{ ansible_distribution_release }} main' state=present
+  when: code_atom_install == True
+  
+- name: Install Atom Editor
+  apt: pkg=atom state=present update_cache=yes
+  when: code_atom_install == True
+  
+- name: Ensure Code Directory Exists
+  become: True
+  become_user: "{{ install_user }}"
+  file:
+    state=directory
+    mode=0755
+    dest={{code_dir}}
+  
+  
