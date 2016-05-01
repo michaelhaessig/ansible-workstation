@@ -1,0 +1,13 @@
+---
+
+- name: Ensure .SSH Directory Exists
+  become: False
+  file: state=directory mode=0700 dest=~/.ssh/
+ 
+# Permissions do not work ? chmod 0600 ~/.ssh/*
+
+    
+  
+
+  
+  

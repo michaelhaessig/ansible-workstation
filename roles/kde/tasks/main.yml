@@ -1,0 +1,19 @@
+---
+
+
+- name: Double Click Folder 
+  command: "kwriteconfig --file ~/.config/kdeglobals --group {{ item.group }} --key {{ item.key }} {{ item.value }}"
+  with_items:
+    - { group: 'KDE', key: 'DoubleClickInterval', value: '400' }
+    - { group: 'KDE', key: 'SingleClick', value: 'true' }
+    - { group: 'KDE', key: 'StartDragDist', value: '4' }
+    - { group: 'KDE', key: 'StartDragTime', value: '500' }
+    - { group: 'KDE', key: 'WheelScrollLines', value: '3' }
+  when: double_click_folder == True
+  
+  
+
+
+
+  
+  

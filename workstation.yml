@@ -1,12 +1,6 @@
 ---
 # Miki Workstation Playbook
 
-#- name: Generate APT Pinnings for specified Packages
-#  hosts: all
-#  become: True
-#  roles:
-#    - { role: debops.apt_preferences, tags: ["apt-pinning"] }
-
 - name: Install Common Packages
   hosts: all
   become: True
@@ -18,6 +12,11 @@
   become: True
   roles:
     - { role: vmware, tags: ["vmware"] }
+    
+- name: Configure KDE Settings
+  hosts: all
+  roles:
+    - { role: kde, tags: ["kde"] }
     
 - name: Install Java
   hosts: all
@@ -42,6 +41,12 @@
   become: True
   roles:
     - { role: code, tags: ["code"] }
+    
+- name: Install Server Tools
+  hosts: all
+  become: True
+  roles:
+    - { role: server, tags: ["server"] }
     
 - name: Install IntelliJ
   hosts: all
