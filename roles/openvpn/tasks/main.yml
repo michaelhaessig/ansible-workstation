@@ -11,4 +11,8 @@
 #- name: Start OpenVPN as a Service and enable on Boot
   #service: name="openvpn@{{ openvpn_client_name }}" state=started enabled=yes
   
+  
+- name: Allow VPN without root 
+  lineinfile: dest=/etc/sudoers state=present line='{{ lookup('env', 'USER') }} ALL=(root) NOPASSWD:/usr/sbin/openvpn' validate='visudo -cf %s'
+  
 
