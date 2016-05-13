@@ -2,3 +2,5 @@
 # defaults file for kde
 
 double_click_folder: True
+high_dpi_fix: False
+high_dpi_factor: 200

@@ -11,9 +11,22 @@
     - { group: 'KDE', key: 'WheelScrollLines', value: '3' }
   when: double_click_folder == True
   
+- name: Fix UI for High DPI Screens 
+  command: "kwriteconfig --file ~/.config/kcmfonts --group {{ item.group }} --key {{ item.key }} {{ item.value }}"
+  with_items:
+    - { group: 'General', key: 'dontChangeAASettings', value: 'true' }
+    - { group: 'General', key: 'forceFontDPI', value: '{{ high_dpi_factor }}' }
+  when: high_dpi_fix == True
   
-
-
+- name: Check if chromeium is isntalled
+  stat: path=/usr/share/applications/chromium-browser.desktop
+  register: result_chromeium_installed
+  when: high_dpi_fix == True
+  
+- name: Fix Chrome High DPI Scaling
+  become: True
+  lineinfile: dest=/usr/share/applications/chromium-browser.desktop state=present line='Exec=chromium-browser --force-device-scale-factor=2 %U' regexp="Exec=chromium-browser %U" 
+  when: high_dpi_fix == True and result_chromeium_installed.stat.exists
 
   
   
