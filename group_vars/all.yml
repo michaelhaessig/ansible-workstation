@@ -4,7 +4,7 @@
 
 # Java
 java_pkg: oracle-java8-installer
-java_pkg_version: 8u77+8u77arm-1~webupd8~4
+java_pkg_version: 8u92+8u91arm-2~really8u91~webupd8~0
 
 # Itellij 
 intellij_version: 15.0.5
