@@ -1,0 +1,15 @@
+---
+# Variables for some custom config
+
+
+# support for high dpi screens
+#high_dpi_fix: False
+#high_dpi_factor: 200
+
+# Double Click to open folder
+#double_click_folder: True
+
+# Git Commit Config
+#git_email: youremail@gmail.com
+#git_user: myuser
+

@@ -1,5 +1,15 @@
 ---
 
+- name: Configure Git User Email 
+  become: False
+  command: "git config --global user.email {{ git_email }}"
+  when: git_email is defined
+  
+- name: Configure Git User Name
+  become: False
+  command: "git config --global user.name {{ git_name }}"
+  when: git_name is defined
+
 - name: Install Maven
   apt: pkg=maven state=present
 
@@ -17,5 +27,3 @@
     state=directory
     mode=0755
     dest={{code_dir}}
-  
-  

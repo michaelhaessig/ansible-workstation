@@ -18,6 +18,7 @@
   
 - name: Install PAC
   apt: deb=/tmp/pac.deb
+  ignore_errors: yes # throws KeyError
   when: pac_check_deb.rc == 1
   
 #INFO import pac.yml into this path before starting !
