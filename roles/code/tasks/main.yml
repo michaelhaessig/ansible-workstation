@@ -1,26 +1,37 @@
 ---
 
-- name: Configure Git User Email 
+- name: Configure Git Settings
   become: False
-  command: "git config --global user.email {{ git_email }}"
-  when: git_email is defined
-  
-- name: Configure Git User Name
-  become: False
-  command: "git config --global user.name {{ git_name }}"
-  when: git_name is defined
+  git_config: name='{{ item.name }}' scope=global value='{{ item.value }}'
+  with_items: '{{ git_settings }}'
+  when: git_settings is defined
 
 - name: Install Maven
   apt: pkg=maven state=present
 
+- name: Install Node JS
+  apt: pkg=nodejs state=present
+
+- name: Install NPM
+  apt: pkg=npm state=present
+
 - name: Add Atom repository
   apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/atom/ubuntu {{ ansible_distribution_release }} main' state=present
   when: code_atom_install == True
-  
+
 - name: Install Atom Editor
   apt: pkg=atom state=present update_cache=yes
   when: code_atom_install == True
-  
+
+- name: Install Atom Packages
+  apm: name={{ item }} state=latest
+  with_items:
+    - 'linter'
+    - 'minimap'
+    - 'emmet'
+    - 'file-icons'
+  when: code_atom_install == True
+
 - name: Ensure Code Directory Exists
   become: False
   file:

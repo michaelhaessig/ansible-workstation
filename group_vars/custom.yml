@@ -10,9 +10,10 @@
 # Double Click to open folder
 #double_click_folder: True
 
-# Git Commit Config
-#git_email: youremail@gmail.com
-#git_user: myuser
+# Git Config
+#git_settings:
+#    - { name: 'user.email', value: 'demo@gmail.com' }
+#    - { name: 'user.name', value: 'demo' }
 
 # Insync Client
 #insync_install: True
