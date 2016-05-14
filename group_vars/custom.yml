@@ -1,6 +1,7 @@
 ---
 # Variables for some custom config
-
+# git update-index --assume-unchanged group_vars/custom.yml
+# git update-index --no-assume-unchanged group_vars/custom.yml
 
 # support for high dpi screens
 #high_dpi_fix: False
