@@ -1,0 +1,10 @@
+# tasks file for insync
+---
+  
+- include: install.yml
+  when: insync_install is defined
+  
+- include: configure.yml
+  become: False
+  when: insync_install is defined
+  

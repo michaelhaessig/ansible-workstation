@@ -54,4 +54,10 @@
   roles:
     - { role: intellij, tags: ["intellij"] }
     
+- name: Install Insync
+  hosts: all
+  become: True
+  roles:
+    - { role: insync, tags: ["insync"] }
+    
 

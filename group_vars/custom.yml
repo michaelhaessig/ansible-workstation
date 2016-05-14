@@ -14,3 +14,5 @@
 #git_email: youremail@gmail.com
 #git_user: myuser
 
+# Insync Client
+#insync_install: True

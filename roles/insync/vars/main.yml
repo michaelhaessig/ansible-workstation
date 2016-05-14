@@ -1,0 +1,12 @@
+# vars file for insync
+---
+
+insync_repositories:
+  - type: deb
+    url: "http://apt.insynchq.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }}"
+    component: 'non-free contrib'
+
+insync_dependencies:
+  - insync 
+  
+drive_dir: ~/drive/
