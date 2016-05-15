@@ -3,8 +3,11 @@
 - name: Ensure .SSH Directory Exists
   become: False
   file: state=directory mode=0700 dest=~/.ssh/
- 
+
 # Permissions do not work ? chmod 0600 ~/.ssh/*
+
+- name: Install Nmap
+  apt: name=nmap state=present
 
 - name: Check if PAC is installed
   command: dpkg-query -W pac
@@ -15,21 +18,14 @@
 - name: Download PAC Manager
   get_url: url=http://downloads.sourceforge.net/project/pacmanager/pac-4.0/pac-4.5.5.7-all.deb dest=/tmp/pac.deb
   when: pac_check_deb.rc == 1
-  
+
 - name: Install PAC
   apt: deb=/tmp/pac.deb
   ignore_errors: yes # throws KeyError
   when: pac_check_deb.rc == 1
-  
+
 #INFO import pac.yml into this path before starting !
 # to reload config you have to delete full ~/.config/pac/ and readd the exported config
 - name: Ensure .Pac Config Directory Exists
   become: False
   file: state=directory mode=0775 dest=~/.config/pac/
-  
-  
-    
-  
-
-  
-  

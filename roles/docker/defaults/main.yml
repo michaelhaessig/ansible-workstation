@@ -1,2 +1,3 @@
 ---
-# defaults file for common
+# defaults file for Docker
+docker_compose_path: "/usr/local/bin/docker-compose"

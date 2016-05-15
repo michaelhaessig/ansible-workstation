@@ -6,11 +6,12 @@
 
 - name: Make sure Update Notifier package is installed ( used to check /var/run/reboot-required )
   apt: name=update-notifier-common state=present
-  
+
 - name: Install Tar
   apt: name=tar state=present
-  
+
+- name: Install Curl
+  apt: name=curl state=present
+
 - name: Install Chromium
   apt: name=chromium-browser state=present
-  
-  

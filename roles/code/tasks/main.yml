@@ -30,6 +30,7 @@
     - 'minimap'
     - 'emmet'
     - 'file-icons'
+    - 'linter-ansible-linting'
   when: code_atom_install == True
 
 - name: Ensure Code Directory Exists
