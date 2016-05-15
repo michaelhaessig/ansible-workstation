@@ -1,14 +1,13 @@
 ---
 
 
-- name: Check if intellij is isntalled
+- name: Check if intellij is installed
   stat: path={{intellij_install_dir}}
   register: result_intellij_installed
   become: False
 
-- include: install.yml 
+- include: install.yml
   when: result_intellij_installed.stat.exists == False
   become: False
 
 #- { include: configure.yml, when: consul_is_server == true, tags: ["intellij_configure"] }
-
