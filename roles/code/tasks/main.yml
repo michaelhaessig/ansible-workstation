@@ -23,7 +23,11 @@
   apt: pkg=atom state=present update_cache=yes
   when: code_atom_install == True
 
+- name: Install Ansible-Lint via Pip
+  pip: name=ansible-lint state=present
+
 - name: Install Atom Packages
+  become: False # installs in home dir
   apm: name={{ item }} state=latest
   with_items:
     - 'linter'
@@ -31,6 +35,7 @@
     - 'emmet'
     - 'file-icons'
     - 'linter-ansible-linting'
+    - 'language-docker'
   when: code_atom_install == True
 
 - name: Ensure Code Directory Exists
