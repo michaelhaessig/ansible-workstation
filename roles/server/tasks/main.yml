@@ -8,6 +8,9 @@
 
 - name: Install Nmap
   apt: name=nmap state=present
+  
+- name: Install Mtr
+  apt: name=mtr state=present
 
 - name: Check if PAC is installed
   command: dpkg-query -W pac

@@ -7,6 +7,12 @@
   roles:
     - { role: common, tags: ["common"] }
     
+- name: Configure Ram Disk
+  hosts: all
+  become: True
+  roles:
+    - { role: ram-disk, tags: ["ram-disk"] }
+    
 - name: Install VMWare Tools
   hosts: all
   become: True

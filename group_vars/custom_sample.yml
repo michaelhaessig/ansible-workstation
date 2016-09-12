@@ -16,3 +16,8 @@
 #
 # Insync Client
 # insync_install: True
+#
+#
+# Ram Disk
+#ram_disk_enalbed: True
+#ram_disk_size: "1024M"

@@ -25,7 +25,7 @@
   
 - name: Fix Chrome High DPI Scaling
   become: True
-  lineinfile: dest=/usr/share/applications/chromium-browser.desktop state=present line='Exec=chromium-browser --force-device-scale-factor=2 %U' regexp="Exec=chromium-browser %U" 
+  lineinfile: dest=/usr/share/applications/chromium-browser.desktop state=present line='Exec=chromium-browser {% if ram_disk_enalbed %}--disk-cache-dir={{ ram_disk_mount }}/chromcache{% endif %} --force-device-scale-factor=2 %U' regexp='^(.*)Exec=chromium-browser(.*)%U$'  backrefs=yes
   when: high_dpi_fix == True and result_chromeium_installed.stat.exists
 
   
