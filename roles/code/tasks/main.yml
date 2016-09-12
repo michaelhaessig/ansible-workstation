@@ -14,6 +14,16 @@
 
 - name: Install NPM
   apt: pkg=npm state=present
+  
+- name: Check if Git Kranken is installed
+  command: dpkg-query -W gitkraken
+  register: gitkraken_check_deb
+  failed_when: gitkraken_check_deb.rc > 1
+  changed_when: gitkraken_check_deb.rc == 1
+  
+- name: Install Git Kranken Ui
+  apt: deb=https://release.gitkraken.com/linux/gitkraken-amd64.deb state=present
+  when: gitkraken_check_deb.rc == 1
 
 - name: Add Atom repository
   apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/atom/ubuntu {{ ansible_distribution_release }} main' state=present
