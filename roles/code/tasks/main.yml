@@ -14,6 +14,17 @@
 
 - name: Install NPM
   apt: pkg=npm state=present
+
+# sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+#- name: Add Yarn Keyserver
+#  apt_key: keyserver='pgp.mit.edu' id='D101F7899D41F3C3' state=present
+  
+  
+- name: Add Yarn Repo
+  apt_repository: repo='deb http://dl.yarnpkg.com/debian/  stable main' state=present
+
+- name: Install Yarn
+  apt: pkg=yarn state=present
   
 - name: Check if Git Kranken is installed
   command: dpkg-query -W gitkraken
