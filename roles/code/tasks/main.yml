@@ -11,6 +11,9 @@
 
 - name: Install Node JS
   apt: pkg=nodejs state=present
+  
+- name: Create Node Binary simlink for 'node' 
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
 
 - name: Install NPM
   apt: pkg=npm state=present
