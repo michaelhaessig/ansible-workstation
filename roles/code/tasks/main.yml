@@ -44,7 +44,7 @@
     - 'minimap'
     - 'emmet'
     - 'file-icons'
-    - 'linter-ansible-linting'
+    - 'php-twig'
     - 'language-docker'
   when: code_atom_install == True
 
