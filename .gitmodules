@@ -1,0 +1,3 @@
+[submodule "roles/role-install-gcloud"]
+	path = roles/role-install-gcloud
+	url = https://github.com/ansible/role-install-gcloud

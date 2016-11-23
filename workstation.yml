@@ -6,64 +6,87 @@
   become: True
   roles:
     - { role: common, tags: ["common"] }
-    
+
 - name: Configure Ram Disk
   hosts: all
   become: True
   roles:
     - { role: ram-disk, tags: ["ram-disk"] }
-    
+
 - name: Install VMWare Tools
   hosts: all
   become: True
   roles:
     - { role: vmware, tags: ["vmware"] }
-    
+
 - name: Configure KDE Settings
   hosts: all
   roles:
     - { role: kde, tags: ["kde"] }
-    
+
 - name: Install Java
   hosts: all
   become: True
   roles:
     - { role: java, tags: ["java"] }
-    
+
 - name: Install Docker
   hosts: all
   become: True
   roles:
     - { role: docker, tags: ["docker"] }
-    
+
 - name: Install OpenVPN
   hosts: all
   become: True
   roles:
     - { role: openvpn, tags: ["openvpn"] }
-    
+
 - name: Install Code Tools
   hosts: all
   become: True
   roles:
     - { role: code, tags: ["code"] }
-    
+
 - name: Install Server Tools
   hosts: all
   become: True
   roles:
     - { role: server, tags: ["server"] }
-    
+
 - name: Install IntelliJ
   hosts: all
   become: True
   roles:
     - { role: intellij, tags: ["intellij"] }
-    
+
+- name: Prepare for Google Cloud install
+  hosts: all
+  become: True
+  tags: ["gcloud"]
+  tasks:
+    - name: Create google Cloud App Folder
+      become: False
+      file:
+        path: "{{ gcloud_install_path }}"
+        state: directory
+        mode: 0755
+      when: gcloud_install is defined
+    - name: Create a tmp path
+      file:
+        path: "{{ gcloud_tmp_path }}"
+        state: directory
+        mode: 0777
+      when: gcloud_install is defined
+
+- name: Install Google Cloud Tools
+  hosts: all
+  become: False
+  roles:
+    - { role: role-install-gcloud, tags: ["gcloud"], when: gcloud_install is defined }
+
 - name: Install Insync
   hosts: all
   become: True
   roles:
     - { role: insync, tags: ["insync"] }
-    
-

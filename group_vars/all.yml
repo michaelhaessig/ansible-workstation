@@ -13,3 +13,9 @@ intellij_version: 15.0.5
 # Docker Config
 docker_version: "1.11.1-0~{{ ansible_distribution_release }}"
 docker_compose_version: "1.7.1"
+
+# Google Cloud Configs
+gcloud_archive_name: google-cloud-sdk-135.0.0-linux-x86_64.tar.gz
+gcloud_force_download: False
+gcloud_install_path: ~/apps/gcloud
+gcloud_tmp_path: /tmp/install_gcloud
