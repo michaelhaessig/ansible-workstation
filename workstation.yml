@@ -90,3 +90,9 @@
   become: True
   roles:
     - { role: insync, tags: ["insync"] }
+
+- name: Install Enpass
+  hosts: all
+  become: True
+  roles:
+    - { role: enpass, tags: ["enpass"] }

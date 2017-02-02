@@ -1,0 +1,17 @@
+# tasks file for enpass
+---
+
+- name: add public key
+  apt_key:
+    url: "https://dl.sinew.in/keys/enpass-linux.key"
+    state: present
+
+- name: add enpass repository
+  apt_repository:
+    repo: "deb http://repo.sinew.in/ stable main"
+    state: present
+
+- name: install dependencies
+  apt:
+    name: "enpass"
+    state: latest

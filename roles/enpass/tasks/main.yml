@@ -1,0 +1,9 @@
+# tasks file for insync
+---
+
+- include: install.yml
+  when: enpass_install is defined
+
+# - include: configure.yml
+#   become: False
+#   when: enpass_install is defined
