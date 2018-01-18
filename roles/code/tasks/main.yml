@@ -15,30 +15,6 @@
 - name: Create Node Binary simlink for 'node' 
   file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
 
-- name: Install NPM
-  apt: pkg=npm state=present
-
-# sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
-#- name: Add Yarn Keyserver
-#  apt_key: keyserver='pgp.mit.edu' id='D101F7899D41F3C3' state=present
-  
-  
-- name: Add Yarn Repo
-  apt_repository: repo='deb http://dl.yarnpkg.com/debian/  stable main' state=present
-
-- name: Install Yarn
-  apt: pkg=yarn state=present
-  
-- name: Check if Git Kranken is installed
-  command: dpkg-query -W gitkraken
-  register: gitkraken_check_deb
-  failed_when: gitkraken_check_deb.rc > 1
-  changed_when: gitkraken_check_deb.rc == 1
-  
-- name: Install Git Kranken Ui
-  apt: deb=https://release.gitkraken.com/linux/gitkraken-amd64.deb state=present
-  when: gitkraken_check_deb.rc == 1
-
 - name: Add Atom repository
   apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/atom/ubuntu {{ ansible_distribution_release }} main' state=present
   when: code_atom_install == True
@@ -58,7 +34,6 @@
     - 'minimap'
     - 'emmet'
     - 'file-icons'
-    - 'php-twig'
     - 'language-docker'
   when: code_atom_install == True
 

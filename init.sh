@@ -10,5 +10,5 @@ git clone git://github.com/ansible/ansible.git --recursive
 
 source ./ansible/hacking/env-setup
 
-git clone https://github.com/michaelhaessig/ansible-workstation.git
+git clone https://github.com/michaelhaessig/ansible-workstation.git --recursive
 

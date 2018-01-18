@@ -28,7 +28,7 @@
   hosts: all
   become: True
   roles:
-    - { role: java, tags: ["java"] }
+    - { role: java, tags: ["java"], when: java_install is defined }
 
 - name: Install Docker
   hosts: all
@@ -58,7 +58,7 @@
   hosts: all
   become: True
   roles:
-    - { role: intellij, tags: ["intellij"] }
+    - { role: intellij, tags: ["intellij"], when: intellij_install }
 
 - name: Prepare for Google Cloud install
   hosts: all
