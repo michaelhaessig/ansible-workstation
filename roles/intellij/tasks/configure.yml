@@ -1,0 +1,10 @@
+---
+
+# Live Templates locations:
+#Windows: <your home directory>\.<product name><version number>\config
+#Linux: ~/.<product name><version number>/config
+#OS X: ~/Library/Preferences/<product name><version number>
+
+
+- name: copy live templates folder
+  copy: src=templates dest=~/.IntelliJIdea{{intellij_version}}/config/templates

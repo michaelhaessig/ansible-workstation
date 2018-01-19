@@ -9,6 +9,7 @@
 intellij_install: False
 
 
+
 # Docker Config
 docker_version: "17.05.0~ce-0~ubuntu-{{ ansible_distribution_release }}"
 docker_compose_version: "1.18.0"
@@ -18,3 +19,8 @@ gcloud_archive_name: google-cloud-sdk-180.0.0-linux-x86_64.tar.gz
 gcloud_force_download: False
 gcloud_install_path: ~/apps/gcloud
 gcloud_tmp_path: /tmp/install_gcloud
+
+gcloud_install: yes
+
+# Minikube
+minikube_install: yes

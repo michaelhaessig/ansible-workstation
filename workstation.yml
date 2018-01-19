@@ -83,7 +83,13 @@
   hosts: all
   become: False
   roles:
-    - { role: role-install-gcloud, tags: ["gcloud"], when: gcloud_install is defined }
+    - { role: role-install-gcloud, tags: ["gcloud"], when: gcloud_install }
+
+- name: Install Mini Kube
+  hosts: all
+  become: True
+  roles:
+    - { role: minikube, tags: ["minikube"], when: minikube_install }
 
 - name: Install Insync
   hosts: all
