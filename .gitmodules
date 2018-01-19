@@ -1,6 +1,7 @@
 [submodule "roles/role-install-gcloud"]                                                                                                                                                                                                          
         path = roles/role-install-gcloud
         url = https://github.com/michaelhaessig/role-install-gcloud
+	branch = master
 [submodule "roles/minikube"]
 	path = roles/minikube
 	url = https://github.com/michaelhaessig/ansible-minikube.git
