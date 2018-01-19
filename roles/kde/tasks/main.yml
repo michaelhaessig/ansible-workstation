@@ -1,32 +1,29 @@
 ---
 
 
-- name: Double Click Folder 
+- name: Double Click Folder
   command: "kwriteconfig --file ~/.config/kdeglobals --group {{ item.group }} --key {{ item.key }} {{ item.value }}"
   with_items:
     - { group: 'KDE', key: 'DoubleClickInterval', value: '400' }
-    - { group: 'KDE', key: 'SingleClick', value: 'true' }
+    - { group: 'KDE', key: 'SingleClick', value: 'false' }
     - { group: 'KDE', key: 'StartDragDist', value: '4' }
     - { group: 'KDE', key: 'StartDragTime', value: '500' }
     - { group: 'KDE', key: 'WheelScrollLines', value: '3' }
-  when: double_click_folder == True
-  
-- name: Fix UI for High DPI Screens 
+  when: double_click_folder
+
+- name: Fix UI for High DPI Screens
   command: "kwriteconfig --file ~/.config/kcmfonts --group {{ item.group }} --key {{ item.key }} {{ item.value }}"
   with_items:
     - { group: 'General', key: 'dontChangeAASettings', value: 'true' }
     - { group: 'General', key: 'forceFontDPI', value: '{{ high_dpi_factor }}' }
-  when: high_dpi_fix == True
-  
+  when: high_dpi_fix
+
 - name: Check if chromeium is isntalled
   stat: path=/usr/share/applications/chromium-browser.desktop
   register: result_chromeium_installed
-  when: high_dpi_fix == True
-  
+  when: high_dpi_fix
+
 #- name: Fix Chrome High DPI Scaling
   #become: True
   #lineinfile: dest=/usr/share/applications/chromium-browser.desktop state=present line='Exec=chromium-browser {% if ram_disk_enalbed %} --disk-cache-dir={{ ram_disk_mount }}/chromcache{% endif %} --force-device-scale-factor=2 %U' regexp='^(.*)Exec=chromium-browser(.*)%U$'backrefs=yes
-  #when: high_dpi_fix == True and result_chromeium_installed.stat.exists
-
-  
-  
+  #when: high_dpi_fix and result_chromeium_installed.stat.exists

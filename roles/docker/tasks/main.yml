@@ -1,28 +1,4 @@
 ---
 
-- name: Add Docker repository key
-  apt_key: keyserver='p80.pool.sks-keyservers.net' id='58118E89F3A912897C070ADBF76221572C52609D' state=present
-
-- name: Add Docker repository
-  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main' state=present
-
-- name: Install Docker
-  apt: pkg='docker-engine={{ docker_version }}' state=present update_cache=yes
-  notify: "Start Docker"
-
-- name: Check if Docker Compose is installed
-  stat: path="{{ docker_compose_path }}"
-  register: result_docker_compose_installed
-
-- name: Install Docker Compose
-  shell: "curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-`uname -s`-`uname -m` > {{ docker_compose_path }}"
-  when: result_docker_compose_installed.stat.exists == False
-
-- name: Make Docker Compose Executable
-  file: path="{{ docker_compose_path }}" state=file mode="a+x"
-
-- name: Add User to Docker groups
-  user: name="{{ lookup('env', 'USER') }}" state=present groups=docker append=yes
-  notify: "Restart Docker"
-
-  # Docker Config ubuntu 16.04 : /etc/docker/daemon.json
+- include_tasks: install.yml
+  when: docker_install

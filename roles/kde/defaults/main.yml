@@ -1,6 +1,5 @@
 ---
 # defaults file for kde
-
-double_click_folder: True
-high_dpi_fix: False
+double_click_folder: no
+high_dpi_fix: no
 high_dpi_factor: 200

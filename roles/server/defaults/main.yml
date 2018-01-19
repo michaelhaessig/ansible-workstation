@@ -1,5 +1,2 @@
 ---
-# defaults file for code
-
-code_dir: ~/code/
-code_atom_install: True
+# defaults file for server

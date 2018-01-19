@@ -1,0 +1,4 @@
+---
+# defaults file for enpass
+
+enpass_install: no

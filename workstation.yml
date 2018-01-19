@@ -7,6 +7,12 @@
   roles:
     - { role: common, tags: ["common"] }
 
+- name: Install Enpass
+  hosts: all
+  become: True
+  roles:
+    - { role: enpass, tags: ["enpass"] }
+
 - name: Configure Ram Disk
   hosts: all
   become: True
@@ -28,7 +34,7 @@
   hosts: all
   become: True
   roles:
-    - { role: java, tags: ["java"], when: java_install is defined }
+    - { role: java, tags: ["java"] }
 
 - name: Install Docker
   hosts: all
@@ -58,47 +64,26 @@
   hosts: all
   become: True
   roles:
-    - { role: intellij, tags: ["intellij"], when: intellij_install }
+    - { role: intellij, tags: ["intellij"] }
 
-- name: Prepare for Google Cloud install
+- name: Install Kubectl
   hosts: all
   become: True
-  tags: ["gcloud"]
-  tasks:
-    - name: Create google Cloud App Folder
-      become: False
-      file:
-        path: "{{ gcloud_install_path }}"
-        state: directory
-        mode: 0755
-      when: gcloud_install is defined
-    - name: Create a tmp path
-      file:
-        path: "{{ gcloud_tmp_path }}"
-        state: directory
-        mode: 0777
-      when: gcloud_install is defined
-
-- name: Install Google Cloud Tools
-  hosts: all
-  become: False
   roles:
-    - { role: role-install-gcloud, tags: ["gcloud"], when: gcloud_install }
+    # we add 'when' here to avoid changing role in submodule
+    - { role: kubectl, tags: ["kubectl"], when: kubectl_install }
 
 - name: Install Mini Kube
   hosts: all
   become: True
   roles:
+    # we add 'when' here to avoid changing role in submodule
     - { role: minikube, tags: ["minikube"], when: minikube_install }
 
-- name: Install Insync
-  hosts: all
-  become: True
-  roles:
-    - { role: insync, tags: ["insync"] }
 
-- name: Install Enpass
+- name: Install Google Cloud Tools
   hosts: all
-  become: True
+  become: False
   roles:
-    - { role: enpass, tags: ["enpass"] }
+    # we add 'when' here to avoid changing role in submodule
+    - { role: role-install-gcloud, tags: ["gcloud"], when: gcloud_install }

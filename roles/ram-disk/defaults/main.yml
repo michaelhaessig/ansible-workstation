@@ -1,5 +1,5 @@
 
-ram_disk_enalbed: False
+ram_disk_enalbed: no
 
 ram_disk_mount: "/tmp/ram"
 

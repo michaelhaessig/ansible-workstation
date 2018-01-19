@@ -1,11 +1,11 @@
 ---
 # defaults file for common
 
-intellij_install: True
+intellij_install: no
+intellij_version: 2016.1.1
 
 intellij_url: "https://download.jetbrains.com/idea/ideaIU-{{intellij_version}}.tar.gz"
 intellij_folder_name: "{{result_intellij_folder_name.stdout_lines.0}}"
 
 intellij_tmp: /tmp/ideaIC-{{intellij_version}}.tar.gz
 intellij_install_dir: "~/apps/idea-{{intellij_version}}"
-intellij_version: 2016.1.1

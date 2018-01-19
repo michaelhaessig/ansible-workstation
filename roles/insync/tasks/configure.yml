@@ -1,8 +1,0 @@
-# tasks file for insync
----
-  
-- name: Ensure Drive Directory Exists
-  file:
-    state=directory
-    mode=0755
-    dest={{drive_dir}}

@@ -2,25 +2,29 @@
 # Variables here are applicable to all host groups
 
 
+# Java ( currently does not work apt package has an error )
+java_install: no
 
-
-# Itellij
-# intellij_version: 15.0.5
-intellij_install: False
-
-
+# Enpass
+enpass_install: yes
 
 # Docker Config
 docker_version: "17.05.0~ce-0~ubuntu-{{ ansible_distribution_release }}"
 docker_compose_version: "1.18.0"
 
 # Google Cloud Configs
+gcloud_install: yes
 gcloud_archive_name: google-cloud-sdk-180.0.0-linux-x86_64.tar.gz
-gcloud_force_download: False
+gcloud_force_download: no
 gcloud_install_path: ~/apps/gcloud
 gcloud_tmp_path: /tmp/install_gcloud
-
-gcloud_install: yes
+# we exlude default kubectl in favour of own role
+gcloud_additional_components: []
 
 # Minikube
+minikube_version: v0.24.1
 minikube_install: yes
+
+# kubectl
+kubectl_install: yes
+kubectl_ver : v1.9.1

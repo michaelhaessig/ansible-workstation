@@ -7,12 +7,15 @@
 - name: Mount the RAM dir into RAM
   mount: name={{ ram_disk_mount }} fstype=tmpfs src=tmpfs opts="defaults,nodev,nosuid,noexec,nodiratime,mode=1777,size={{ ram_disk_size }}" state=mounted
   when: ram_disk_enalbed
-  
+
 - name: Check if chromeium is installed
   stat: path=/usr/share/applications/chromium-browser.desktop
   register: result_chromeium_installed
-  
-- name: Put Chromium Cache on RAM Disk
 
+- name: Put Chromium Cache on RAM Disk
   lineinfile: dest=/usr/share/applications/chromium-browser.desktop state=present line='Exec=chromium-browser --disk-cache-dir={{ ram_disk_mount }}/chromcache %U' regexp='^(.*)Exec=chromium-browser(.*)%U$'  backrefs=yes
-  when: result_chromeium_installed.stat.exists
+  when: ram_disk_enalbed and result_chromeium_installed.stat.exists
+
+- name: Ensure RAM mount is not present
+  mount: name={{ ram_disk_mount }} state=unmounted
+  when: not ram_disk_enalbed

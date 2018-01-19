@@ -1,4 +1,4 @@
 ---
 # defaults file for common
 
-vmware_tools: True
+vmware_install: yes

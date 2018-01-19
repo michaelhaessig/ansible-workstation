@@ -1,0 +1,6 @@
+---
+# defaults file for common
+
+java_install: yes
+java_pkg: oracle-java9-installer
+java_pkg_version:  9.0.1-1~webupd8~0

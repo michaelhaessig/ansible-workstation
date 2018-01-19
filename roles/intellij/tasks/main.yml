@@ -4,11 +4,13 @@
 - name: Check if intellij is installed
   stat: path={{intellij_install_dir}}
   register: result_intellij_installed
+  when: intellij_install
   become: False
 
-- include: install.yml
-  when: result_intellij_installed.stat.exists == False
+- include_tasks: install.yml
+  when: intellij_install and result_intellij_installed.stat.exists == False
   become: False
 
-- include: configure.yml
+- include_tasks: configure.yml
+  when: intellij_install
   become: False

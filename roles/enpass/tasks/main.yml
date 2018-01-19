@@ -2,7 +2,7 @@
 ---
 
 - include: install.yml
-  when: enpass_install is defined
+  when: enpass_install
 
 # - include: configure.yml
 #   become: False

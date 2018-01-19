@@ -2,31 +2,44 @@
 # Variables for some custom config
 # Copy File and rename to custom.yml
 
-# support for high dpi screens
-#high_dpi_fix: False
-#high_dpi_factor: 200
+# ram_disk_enalbed: no
+# ram_disk_size: "1024M"
 
-# Double Click to open folder
-# double_click_folder: True
-#
+# vmware_install: yes
+
+# kde
+# double_click_folder: no
+# high_dpi_fix: no
+# high_dpi_factor: 200
+
+# java
+# java_install: yes
+# java_pkg: oracle-java9-installer
+# java_pkg_version:  9.0.1-1~webupd8~0
+
+# docker
+# docker_install: yes
+
+# openvpn
+# openvpn_install: yes
+
 # Git Config
 # git_settings:
 #     - { name: 'user.email', value: 'demo@gmail.com' }
 #     - { name: 'user.name', value: 'demo' }
 #
-# Insync Client
-# insync_install: True
-#
-#
-# Ram Disk
-#ram_disk_enalbed: True
-#ram_disk_size: "1024M"
+# code_dir: ~/code/
+# code_atom_install: yes
 
-# Java 
-# java_install: True
-# java_pkg: oracle-java9-installer
-# java_pkg_version:  9.0.1-1~webupd8~0 
-#
+# intellij_install: no
+# intellij_version: 2017.3
+
+
+# kubectl_install: yes
+# kubectl_ver : v1.9.1
+
+# minikube_version: v0.24.1
+
 #
 # Google Cloud Tools
-#gcloud_install: True
+# gcloud_install: yes
